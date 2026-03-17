@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório STARS</title>
+    <style>
+        body {
+            background-color: #0b0b0b;
+            color: #e0e0e0;
+            font-family: "Courier New", monospace;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            border: 1px solid #444;
+            padding: 20px;
+            background-color: #111;
+            box-shadow: 0 0 15px rgba(255,0,0,0.2);
+        }
+        h1 {
+            color: #ff2e2e;
+            text-align: center;
+        }
+        .status {
+            color: #ff4444;
+            font-weight: bold;
+        }
+        .log {
+            background: #000;
+            padding: 15px;
+            margin-top: 20px;
+            border-left: 4px solid #ff2e2e;
+        }
+        .blink {
+            animation: blink 1s infinite;
+        }
+        @keyframes blink {
+            0% {opacity: 1;}
+            50% {opacity: 0.3;}
+            100% {opacity: 1;}
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px;
+            background: #ff2e2e;
+            border: none;
+            color: white;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>STARS - RELATÓRIO DE MISSÃO</h1>
+
+    <p><strong>Status:</strong> <span class="status blink">CRÍTICO</span></p>
+    <p><strong>Local:</strong> Delegacia Central</p>
+    <p><strong>Tipo de ameaça:</strong> Bio-terrorismo</p>
+
+    <div class="log" id="log">
+        <p>> Inicializando sistema...</p>
+    </div>
+
+    <button onclick="iniciarRelatorio()">Acessar Relatório Completo</button>
+</div>
+
+<script>
+function iniciarRelatorio() {
+    const log = document.getElementById('log');
+    const mensagens = [
+        'Conexão estabelecida com servidor STARS...',
+        'Detectando sinais vitais na área...',
+        'ALERTA: Múltiplas entidades hostis identificadas.',
+        'Origem do surto: desconhecida.',
+        'Testemunhas relatam comportamento agressivo e perda de consciência.',
+        'Possível agente biológico em circulação.',
+        'Equipe tática enviada ao local...',
+        'CLASSIFICAÇÃO: INCIDENTE DE NÍVEL ÔMEGA.'
+    ];
+
+    let i = 0;
+    function adicionarMensagem() {
+        if (i < mensagens.length) {
+            const p = document.createElement('p');
+            p.textContent = '> ' + mensagens[i];
+            log.appendChild(p);
+            log.scrollTop = log.scrollHeight;
+            i++;
+            setTimeout(adicionarMensagem, 1200);
+        }
+    }
+
+    adicionarMensagem();
+}
+</script>
+
+</body>
+</html>
